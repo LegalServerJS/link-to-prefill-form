@@ -1,6 +1,6 @@
 # Create a link in Legalserver to prefill a form in JotForm.
 
-See index.html for a an example showing how to create a link that will prefill a JotForm form.
+See index.html for an example showing how to create a link that will prefill a JotForm form.
 
 Simply copy and paste the marked section in index.html into an instruction in legalserver.
 
