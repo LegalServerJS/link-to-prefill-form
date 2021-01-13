@@ -1,0 +1,56 @@
+<html>
+<head></head>
+<body>
+<h1> Making a link to pre-fill a jotform form </h1>
+<div>
+<h2> A few example legalserver fields </h2>
+<div> These fields might appear in a LS process. </div>
+
+<span name="matter:client_first_name">Jeremy</span>
+<span name="matter:client_last_name">Beremy</span>
+<span name="matter:id">21-1234</span>
+</div>
+
+
+<div>
+<h2> An html-formatted instruction that builds a link to prefill a jotform form.</h2>
+<p>View the source to see the code you need.</p>.
+<p>Copy/paste it into legalserver, making sure the selectors match your actual site</p>
+<p> Also visit Jotform's <a href="https://www.jotform.com/help/71-prepopulating-fields-to-your-jotform-via-url-parameters">documentation.</a>
+<div style="background-color:'yellow'">
+
+<!--This empty container will hold the link that our script builds.-->
+<div id="linkContainer"></div>
+
+</div>
+    <script text="text/javascript"/>
+        // First, collect the elements you need to fill in your form.
+        // document.getElementsByName finds an array.
+        // You can also find by ID or other selectors. 
+        var clientFirstName = document.getElementsByName("matter:client_first_name")[0].innerHTML;
+        var clientLastName = document.getElementsByName("matter:client_last_name")[0].innerHTML;
+        var caseID = document.getElementsByName("matter:id")[0].innerHTML;
+
+        // next build your jotform url
+        // The query parameters are from the field names in Jotform
+        // (go to the form editor, select a field, then go to Advanced/Field details to find or edit the name.)
+        var idOfMyForm = "12345";
+        var url = "https://www.jotform.com/" + idOfMyForm + "?firstName=" + clientFirstName + "&lastName=" + clientLastName + "&caseId=" + caseID;
+
+        // Now find the container where we want to put a link:
+        var container = document.getElementById("linkContainer");
+
+        // Then create a new <a> element, with an href property of the url we want to link to.
+        var jotformLink = document.createElement("a");
+        jotformLink.href = url;
+        jotformLink.target = "__blank";
+        var newContent = document.createTextNode("Fill in Jotform form");
+        jotformLink.appendChild(newContent);        
+
+        // And add this element to the container.
+        container.appendChild(jotformLink);
+    </script>
+</div>
+
+</body>
+</html>
